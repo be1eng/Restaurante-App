@@ -1,0 +1,7 @@
+# Base de datos SEPARADA para pruebas (así no ensucias tus datos reales)
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/restaurante_test?serverTimezone=America/Lima
+app:
+  jwt:
+    secret: clave-solo-para-pruebas-automaticas-0123456789

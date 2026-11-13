@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: local
   datasource:
     url: jdbc:mysql://localhost:3306/restaurante_db?serverTimezone=America/Lima
     username: ${DB_USER:app}
