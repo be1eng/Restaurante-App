@@ -10,7 +10,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     boolean existsByEmail(String email);
 
-    // Trae el usuario junto con sus roles y permisos en una sola consulta
-    @EntityGraph(attributePaths = {"roles", "roles.permisos"})
+    // Trae el usuario junto con sus roles, permisos y restaurante en una sola consulta
+    @EntityGraph(attributePaths = {"roles", "roles.permisos", "restaurante"})
     Optional<Usuario> findByEmail(String email);
 }

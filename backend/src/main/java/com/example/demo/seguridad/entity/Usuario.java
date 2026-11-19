@@ -1,5 +1,6 @@
 package com.example.demo.seguridad.entity;
 
+import com.example.demo.restaurante.entity.Restaurante;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-/** Persona que usa el sistema. Tabla: usuario.
- *  (restaurante_id se mapeará más adelante, cuando exista la migración V2) */
+/** Persona que usa el sistema. Tabla: usuario. */
 @Entity
 @Table(name = "usuario")
 @Getter @Setter @NoArgsConstructor
@@ -38,6 +38,11 @@ public class Usuario {
 
     @Column(name = "creado_at", nullable = false, updatable = false)
     private LocalDateTime creadoAt;
+
+    // Columna agregada por V2__restaurante.sql. Es null para clientes y administradores.
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurante_id")
+    private Restaurante restaurante;
 
     // Relación muchos a muchos usando la tabla intermedia usuario_rol
     @ManyToMany(fetch = FetchType.LAZY)

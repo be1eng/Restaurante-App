@@ -21,6 +21,7 @@ public class UsuarioService {
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         return new UsuarioResponse(
                 u.getId(), u.getNombre(), u.getEmail(),
-                u.getRoles().stream().map(Rol::getNombre).sorted().toList());
+                u.getRoles().stream().map(Rol::getNombre).sorted().toList(),
+                u.getRestaurante() != null ? u.getRestaurante().getId() : null);
     }
 }
